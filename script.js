@@ -1,11 +1,14 @@
 "use strict";
 let yid;
+
+/*----------------------GET GAME LIST FROM API----------------------------*/
 function searchPage(g) {
   fetch("https://api.rawg.io/api/games?page_size=10&search=" + g)
     .then(response => response.json())
     .then(responseJson => displayResults(responseJson))
     .catch(error => alert("Something went wrong. Try again later."));
 }
+/*----------------------GET GAME INFO FROM API  ----------------------------*/
 function gameDetails(gameName) {
   fetch("https://api.rawg.io/api/games/" + gameName)
     .then(response => response.json())
@@ -15,6 +18,7 @@ function gameDetails(gameName) {
     );
 }
 
+/*----------------------GAME LIST PAGE ----------------------------*/
 function displayResults(responseJson) {
   $(".gameInfo").empty();
   $("#search-results").empty();
@@ -24,9 +28,7 @@ function displayResults(responseJson) {
     console.log(responseJson.results[i].name);
     $("#search-results").append(
       `<li>
-        <img class="results-image" src='${
-          responseJson.results[i].background_image
-        }'>
+        <img class="results-image" src='${responseJson.results[i].background_image}'>
       <h3 id="${i}" class="result-heading">${responseJson.results[i].name}</h3>
       </li>`
     );
@@ -35,6 +37,7 @@ function displayResults(responseJson) {
   gameId(responseJson);
 }
 
+/*----------------------GAME INFORMATION PAGE ----------------------------*/
 function displayGame(data, responseJson1) {
   $("#searchResults").addClass("hidden");
   let youtubeId = data.items[0].id.videoId;
@@ -46,9 +49,7 @@ function displayGame(data, responseJson1) {
      src="https://www.youtube.com/embed/${youtubeId}">
      </iframe>
     <p class="details">RELEASED : <span >${responseJson1.released}</span></p>
-    <p class="details">METACRITIC RATING : <span>${
-      responseJson1.metacritic
-    }</span></p>
+    <p class="details">METACRITIC RATING : <span>${responseJson1.metacritic}</span></p>
     <p class="rating">RATING ${responseJson1.rating}/5</p>
     <div class="desc">
     <p>THE GAME</p>
@@ -62,26 +63,21 @@ function displayGame(data, responseJson1) {
   for (let j = 0; j < responseJson1.stores.length; j++) {
     if (responseJson1.stores[j].store.id == 1) {
       $(".gameInfo").append(
-        `<a href="${
-          responseJson1.stores[j].url
-        }" class="platform" target="_blank"><i class="fab fa-windows"></i></<a>`
+        `<a href="${responseJson1.stores[j].url}" class="platform" target="_blank"><i class="fab fa-windows"></i></<a>`
       );
     } else if (responseJson1.stores[j].store.id == 2) {
       $(".gameInfo").append(
-        `<a href="${
-          responseJson1.stores[j].url
-        }" class="platform" target="_blank"><i class="fab fa-xbox"></i></<a>`
+        `<a href="${responseJson1.stores[j].url}" class="platform" target="_blank"><i class="fab fa-xbox"></i></<a>`
       );
     } else if (responseJson1.stores[j].store.id == 3) {
       $(".gameInfo").append(
-        `<a href="${
-          responseJson1.stores[j].url
-        }" class="platform" target="_blank"><i class="fab fa-playstation"></i></<a>`
+        `<a href="${responseJson1.stores[j].url}" class="platform" target="_blank"><i class="fab fa-playstation"></i></<a>`
       );
     }
   }
 }
 
+/*----------------------GET GAME ID----------------------------*/
 function gameId(responseJson) {
   $("#search-results").on("click", "h3", function(e) {
     event.preventDefault();
@@ -90,16 +86,16 @@ function gameId(responseJson) {
   });
 }
 
+/*----------------------GET YOUTUBE VIDEO ----------------------------*/
 function getYouTubeVideos(responseJson1) {
-  const url = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyAGXMpHkC4iTZs4uRtYEyLla2Xs6fRmqV8&part=snippet&maxResults=1&type=video&q=${
-    responseJson1.name
-  } Trailer`;
+  const url = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyAGXMpHkC4iTZs4uRtYEyLla2Xs6fRmqV8&part=snippet&maxResults=1&type=video&q=${responseJson1.name} Trailer`;
   fetch(url)
     .then(response => response.json())
     .then(data => displayGame(data, responseJson1))
     .catch(error => alert("Something went wrong. Try again later."));
 }
 
+/*----------------------SEARCH A GAME----------------------------*/
 function searchSubmit() {
   $(".searchButton").click(function() {
     event.preventDefault();
@@ -109,6 +105,8 @@ function searchSubmit() {
   });
 }
 
+/*----------------------HAMBURGER MENU ----------------------------*/
+
 function hamburgerMenu() {
   $(".container-2 ").click(function() {
     this.classList.toggle("change");
@@ -116,6 +114,7 @@ function hamburgerMenu() {
   });
 }
 
+/*----------------------STARTING PAGE ----------------------------*/
 function mainPage() {
   $(".main-image img").on("click", function() {
     $(".main-games").addClass("hidden");
@@ -144,6 +143,7 @@ function mainPage() {
   });
 }
 
+/*----------------NAVIGATING THROUGH THE APP ---------------------*/
 function docNavigation() {
   $("#myBtn").on("click", function(e) {
     e.preventDefault();
@@ -180,6 +180,8 @@ function docNavigation() {
     $(".main-games").removeClass("hidden");
   });
 }
+
+/*------FUNCTIONS-------*/
 
 $(function() {
   console.log("App loaded! Waiting for submit!");

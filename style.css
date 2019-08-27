@@ -130,7 +130,17 @@ h1 {
 .main-page-heading h2 {
   padding: 10px;
 }
-
+.main-games p {
+  font-size: 20px;
+  text-align: center;
+  font-family: "Courgette", cursive;
+  font-style: italic;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: silver;
+}
 .img-container {
   display: flex;
   flex-wrap: wrap;
@@ -146,8 +156,8 @@ h1 {
 }
 
 .img-container img {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 375px;
 
   border-radius: 5px;
 }
@@ -161,11 +171,6 @@ h1 {
   opacity: 0.5;
 
   transition: 1s;
-}
-.wrapper img:hover {
-  width: 405px;
-  height: 405px;
-  transition: 0.8s;
 }
 .hidden {
   display: none;
@@ -195,18 +200,19 @@ h1 {
   color: grey;
   text-transform: uppercase;
 }
-
+.results h3 i {
+  color: red;
+}
 .results h3:hover {
   transition: 0.5s;
   color: white;
-  font-size: 20px;
   font-weight: 800;
 }
 .srch-rslts img {
   border: 2px solid rgba(128, 128, 128, 0.295);
   border-radius: 20px;
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 262px;
 }
 
 /* Game details section*/
@@ -218,7 +224,7 @@ h1 {
 }
 .gameInfo h2 {
   margin: 30px;
-  padding: 10px;
+  padding-bottom: 10px;
   text-align: center;
   text-transform: uppercase;
   font-family: "Russo One", sans-serif;
@@ -334,6 +340,7 @@ footer i {
   bottom: 20px;
   right: 40px;
   background-color: white;
+
   border-radius: 10px;
   border: none;
   font-size: 30px;
@@ -349,34 +356,25 @@ footer i {
   transition: 0.5s;
 }
 
-@media screen and (min-width: 320px) and (max-width: 374px) {
+@media screen and (min-width: 320px) and (max-width: 424px) {
   h1 {
     font-size: 25px;
   }
   .img-container img {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 225px;
   }
 
-  .wrapper img:hover {
-    width: 255px;
-    height: 255px;
-  }
   .ytvideo {
     width: 250px;
     height: 265px;
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 767px) {
+@media screen and (min-width: 425px) and (max-width: 767px) {
   .img-container img {
-    width: 350px;
-    height: 350px;
-  }
-
-  .wrapper img:hover {
-    width: 355px;
-    height: 355px;
+    width: 400px;
+    height: 300px;
   }
 }
 
@@ -394,7 +392,9 @@ footer i {
     display: flex;
     justify-content: space-between;
   }
-
+  .main-games p {
+    font-size: 25px;
+  }
   .topnav {
     display: flex;
     width: 30%;
@@ -442,17 +442,20 @@ footer i {
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
   h1 {
-    font-size: 35px;
+    font-size: 32px;
   }
   .container-2 {
     display: none;
   }
   .container {
-    padding-left: 8%;
+    padding-left: 5%;
   }
   header {
     display: flex;
     justify-content: space-between;
+  }
+  .main-games p {
+    font-size: 27px;
   }
   .topnav {
     display: flex;
@@ -501,7 +504,7 @@ footer i {
   }
 }
 
-@media screen and (min-width: 1441px) and (max-width: 2560px) {
+@media screen and (min-width: 1441px) {
   h1 {
     font-size: 35px;
   }
@@ -509,12 +512,16 @@ footer i {
     display: none;
   }
   .container {
-    padding-left: 18%;
+    padding-left: 10%;
   }
   header {
     display: flex;
     justify-content: space-between;
   }
+  .main-games p {
+    font-size: 28px;
+  }
+
   .topnav {
     display: flex;
     width: 30%;
@@ -549,12 +556,8 @@ footer i {
     line-height: 35px;
   }
   .img-container img {
-    width: 450px;
-    height: 450px;
-  }
-  .img-container img:hover {
-    width: 455px;
-    height: 455px;
+    width: 550px;
+    height: 412.5px;
   }
 
   .gameInfo {

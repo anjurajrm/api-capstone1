@@ -29,7 +29,7 @@ function displayResults(responseJson) {
     $("#search-results").append(
       `<li>
         <img class="results-image" src='${responseJson.results[i].background_image}'>
-      <h3 id="${i}" class="result-heading">${responseJson.results[i].name}</h3>
+      <h3 id="${i}" class="result-heading">${responseJson.results[i].name} <i class="fas fa-caret-right"></i></h3>
       </li>`
     );
   }
@@ -178,6 +178,11 @@ function docNavigation() {
     $(".gameInfo").empty();
     $("#search-results").empty();
     $(".main-games").removeClass("hidden");
+  });
+
+  $("#backBtn").on("click", function(e) {
+    let ger = $("#searchValue").val();
+    console.log(ger);
   });
 }
 
